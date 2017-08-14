@@ -44,9 +44,11 @@ Base = declarative_base()
 class User(Base):
 	__tablename__ = "users"
 	username = Column(String, primary_key=True)
+	email = Column(String)
 
-	def __init__(self, username):
+	def __init__(self, username, email):
 		self.username = username
+		self.email = email
 
 
 class Book(Base):
@@ -96,7 +98,7 @@ class CheckOut(Base):
 
 class Library():
 
-	def __init__(self, books = [], usernames = []):
+	def __init__(self, books = [], users = []):
 		self.checked_out = {}
 		self.books = {}
 		self.users = {}
@@ -104,8 +106,8 @@ class Library():
 		self.checkout_days = 30
 		for book in books:
 			self.add_book(book)
-		for username in usernames:
-			self.users[username] = User(username)
+		for user in users:
+			self.users[user.username] = user
 
 	def has_user(self, username):
 		return username in self.users.keys()

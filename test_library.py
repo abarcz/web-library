@@ -31,8 +31,16 @@ def book2():
 	return Book("Clean Architecture", "R.C. Martin")
 
 @pytest.fixture()
-def library(book, book2):
-	library = Library([book, book2], ["AB", "CD"])
+def user1():
+	return User("AB", "ab@ab.pl")
+
+@pytest.fixture()
+def user2():
+	return User("CD", "cd@cd.com")
+
+@pytest.fixture()
+def library(book, book2, user1, user2):
+	library = Library([book, book2], [user1, user2])
 	library.check_out("Clean Architecture", "AB")
 	return library
 
@@ -42,6 +50,9 @@ def persistence():
 	persistence = PersistenceManager("sqlite:///:memory:")
 	persistence.create_tables()
 	return persistence
+
+def test_user_email(user1):
+	assert(user1.email == "ab@ab.pl")
 
 def test_user_exists(library):
 	assert(library.has_user("AB"))
