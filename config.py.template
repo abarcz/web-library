@@ -1,0 +1,8 @@
+# web page title to be displayed in browser:
+PAGE_TITLE="my simple library"
+
+# script path (must end with "/"):
+PATH="/home/user/web-library/"
+
+# db_path for sqlalchemy:
+DB_PATH="postgresql://postgres:postgres@localhost:5432/library"
