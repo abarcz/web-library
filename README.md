@@ -13,7 +13,9 @@ how to use:
 + configure apache2 with mod_apache
 
 to create tables run the following in a python shell:
-	import config
-	import library
-	pm = library.PersistenceManager(config.DB_PATH)
-	pm.create_tables()
+```
+import config
+import library
+pm = library.PersistenceManager(config.DB_PATH)
+pm.create_tables()
+```
