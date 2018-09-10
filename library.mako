@@ -63,7 +63,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 								borrower_input = "holder"
 								borrower_button = "Hold"
 						if book.holder != "":
-							due_text = due_text + " (held by: %s)" % book.holder
+							due_text = due_text + " (next: %s)" % book.holder
 							unhold_button = unhold_button + " (%s)" % book.holder
 							disable_unhold = ""
 					%>

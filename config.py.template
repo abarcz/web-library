@@ -6,3 +6,9 @@ PATH="/home/user/web-library/"
 
 # db_path for sqlalchemy:
 DB_PATH="postgresql://postgres:postgres@localhost:5432/library"
+
+# text to send to user when the book is overdue, first %s will be replaced by title
+OVERDUE_TEXT="The book %s is overdue, please return it"
+OVERDUE_SUBJECT="Book overdue"
+OVERDUE_SENDER="weblibrary"
+OVERDUE_SENDER_EMAIL="weblibrary@localhost"

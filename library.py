@@ -112,6 +112,9 @@ class Library():
 	def has_user(self, username):
 		return username in self.users.keys()
 
+	def get_user(self, username):
+		return self.users[username]
+
 	def add_book(self, book):
 		self.books[book.title] = book
 
@@ -172,7 +175,7 @@ class Library():
 	def hold(self, title, username):
 		if self.available(title):
 			raise Exception("Cannot hold book '%s' which is available" % title)
-		if self.held_by(title) != None:
+		if not self.held_by(title) in [username, None]:
 			raise Exception("Cannot hold book '%s' which is held" % title)
 		if self.checked_by(title) == username:
 			raise Exception("Cannot hold book '%s', because user is the same as borrower" % title)

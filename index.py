@@ -77,3 +77,6 @@ def index(req, borrower=None, holder=None, borrowed_title=None, returned_title=N
 	persistence.close()
 	template = Template(filename=PATH + "library.mako", format_exceptions=True)
 	return template.render(title=PAGE_TITLE, books=entries, users=library.users.keys())
+
+def handler(req):
+    return index(req)

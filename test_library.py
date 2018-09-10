@@ -125,8 +125,12 @@ def test_cannot_hold_if_borrower(library):
 
 def test_double_hold(library):
 	library.hold("Clean Architecture", "CD")
-	with pytest.raises(Exception):
-		library.hold("Clean Architecture", "CD")
+	assert(library.held_by("Clean Architecture") == "CD")
+	library.hold("Clean Architecture", "CD")
+	assert(library.held_by("Clean Architecture") == "CD")
+
+def test_different_hold(library):
+	library.hold("Clean Architecture", "CD")
 	with pytest.raises(Exception):
 		library.hold("Clean Architecture", "AB")
 	assert(library.held_by("Clean Architecture") == "CD")
