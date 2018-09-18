@@ -55,7 +55,8 @@ def build_entries(library):
 		if library.is_held(book.title):
 			entry.holder = library.held_by(book.title)
 		entries.append(entry)
-	return entries
+	sorted_entries = sorted(entries, key=lambda entry: entry.title)
+	return sorted_entries
 
 def index(req, borrower=None, holder=None, borrowed_title=None, returned_title=None, unheld_title=None):
 	persistence = PersistenceManager(DB_PATH)
